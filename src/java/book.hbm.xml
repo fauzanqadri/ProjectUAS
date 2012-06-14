@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="Model.Book" table="books">
+      
+      <id name="id" type="long" column="id" >
+          <generator class="increment" />
+      </id>
+      
+      <property name="title" column="title" type="string" />
+      <property name="book_location" column="book_location" type="string" />
+      <property name="image_path" column="image_path" type="string" />
+      <property name="isbn_issn" column="isbn_issn" type="string" />
+      <property name="note" column="note" type="string" />
+      <property name="stock" column="stock" type="integer" />
+      <property name="author_id" column="author_id" type="integer";
+      <property name="publisher_id" column="publisher_id" type="integer"/>
+      <property name="author_id" column="author_id" type="integer" />
+      <property name="input_date" column="input_date" type="date" />
+      <property name="last_data_update" column="last_data_update" type="date" />
+      
+  </class>
+</hibernate-mapping>
