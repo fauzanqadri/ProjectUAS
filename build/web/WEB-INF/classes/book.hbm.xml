@@ -15,7 +15,6 @@
       <property name="stock" column="stock" type="integer" />
       <property name="author_id" column="author_id" type="integer"/>
       <property name="publisher_id" column="publisher_id" type="integer"/>
-      <property name="author_id" column="author_id" type="integer" />
       <property name="input_date" column="input_date" type="date" />
       <property name="last_data_update" column="last_data_update" type="date" />
       
