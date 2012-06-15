@@ -42,6 +42,8 @@ public class testing {
             while(iterator.hasNext()){
                 Book book = (Book) iterator.next();
                 System.out.println("title = "+book.getTitle());
+                System.out.println("input date = "+book.getInput_date().toString());
+                System.out.println("Author = "+book.getAuthor().getName());
             }
             session.getTransaction().commit();
             session.close();

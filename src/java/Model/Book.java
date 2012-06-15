@@ -26,6 +26,17 @@ public class Book{
     private Date last_data_update;
     private int stock;
     private String book_location;
+    private Author author;
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+    
+    
 
     public int getAuthor_id() {
         return author_id;
