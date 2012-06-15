@@ -4,8 +4,13 @@
     Author     : fauzan
 --%>
 
+
+
+<%@page import="Model.Book"%>
+<%@page import="java.util.Iterator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.*" %>
+<%@page import="Controller.GetController" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,19 +19,13 @@
     </head>
     <body>
         <h1>Hello World! </h1>
-        <form method="POST" action="SelectCoffee.do">
-    Select coffee 
-    Type:
-    <select name="type" size=1">
-      <option value="milky">Milky</option>
-      <option value="froffy">Froffy</option>
-      <option value="icey">Icey</option>
-      <option value="strong">Spaced Out</option>
-    </select>
-    <br><br>
-    <center>
-      <input type="Submit">
-    </center>
-   </form>
+        <%
+        GetController getController = new GetController();
+        Iterator iterator = getController.getAllBook();
+            while(iterator.hasNext()){ 
+                Book book = (Book) iterator.next(); %>
+                out.print("<br>Title: " + book.getTitle());
+                
+            <%}%>
     </body>
 </html>
