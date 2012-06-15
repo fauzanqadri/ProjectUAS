@@ -57,13 +57,6 @@ public class Category {
         this.note = note;
     }
 
-    public Category(String name, Date input_date, Date last_update, String note) {
-        this.name = name;
-        this.input_date = input_date;
-        this.last_update = last_update;
-        this.note = note;
-    }
-
     public Category() {
     }
     

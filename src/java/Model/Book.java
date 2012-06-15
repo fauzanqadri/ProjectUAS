@@ -145,20 +145,6 @@ public class Book{
     public void setTitle(String title) {
         this.title = title;
     }
-
-    public Book(long id, String title, String isbn_issn, String note, int publisher_id, int author_id, String image_path, Date input_date, Date last_data_update, int stock, String book_location) {
-        this.id = id;
-        this.title = title;
-        this.isbn_issn = isbn_issn;
-        this.note = note;
-        this.publisher_id = publisher_id;
-        this.author_id = author_id;
-        this.image_path = image_path;
-        this.input_date = input_date;
-        this.last_data_update = last_data_update;
-        this.stock = stock;
-        this.book_location = book_location;
-    }
     
     public Book() {
     }

@@ -19,8 +19,8 @@ import java.util.Iterator;
 
 public class testing {
     
-    public Iterator test(){
-    //public static void main(String[] a){
+    //public Iterator test(){
+    public static void main(String[] a){
         Session session = null;
         Iterator iterator = null;
 //        try{
@@ -43,25 +43,25 @@ public class testing {
             List list = q.list();
             iterator = list.iterator();
 
-//            while(iterator.hasNext()){
-//                Book book = (Book) iterator.next();
-//                System.out.println("title = "+book.getTitle());
-//                System.out.println("input date = "+book.getInput_date().toString());
-//                System.out.println("Author = "+book.getAuthor().getName());
-//                System.out.println("Publisher = "+book.getPublisher().getName());
-//                System.out.println("Category : ");
-//                for (Category categories :  book.getCategories()) {
-//                    System.out.println("\t"+categories.getName());
-//                }
-//            }
+            while(iterator.hasNext()){
+                Book book = (Book) iterator.next();
+                System.out.println("title = "+book.getTitle());
+                System.out.println("input date = "+book.getInput_date().toString());
+                System.out.println("Author = "+book.getAuthor().getName());
+                System.out.println("Publisher = "+book.getPublisher().getName());
+                System.out.println("Category : ");
+                for (Category categories :  book.getCategories()) {
+                    System.out.println("\t"+categories.getName());
+                }
+            }
             session.getTransaction().commit();
             session.close();
             sessionFactory.close();
             
-            return iterator;
+           // return iterator;
         }catch(Exception e){
             System.out.println(e.getMessage());
-            return iterator;
+            //return iterator;
         }
         
     }
