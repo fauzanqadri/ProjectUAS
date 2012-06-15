@@ -8,8 +8,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.Query;
 import Model.Book;
+import Model.Category;
 import java.util.List;
 import java.util.Iterator;
+
 /**
  *
  * @author fauzan
@@ -39,11 +41,17 @@ public class testing {
             Query q = session.createQuery("From Book");
             List list = q.list();
             Iterator iterator = list.iterator();
+
             while(iterator.hasNext()){
                 Book book = (Book) iterator.next();
                 System.out.println("title = "+book.getTitle());
                 System.out.println("input date = "+book.getInput_date().toString());
                 System.out.println("Author = "+book.getAuthor().getName());
+                System.out.println("Publisher = "+book.getPublisher().getName());
+                System.out.println("Category : ");
+                for (Category categories :  book.getCategories()) {
+                    System.out.println("\t"+categories.getName());
+                }
             }
             session.getTransaction().commit();
             session.close();

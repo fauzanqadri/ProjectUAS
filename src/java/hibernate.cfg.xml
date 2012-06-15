@@ -11,5 +11,7 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="Model.Book" resource="book.hbm.xml"/>
     <mapping class="Model.Author" resource="author.hbm.xml"/>
+    <mapping class="Model.Publisher" resource="publisher.hbm.xml"/>
+    <mapping resource="category.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

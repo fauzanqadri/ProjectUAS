@@ -8,6 +8,12 @@
       </id>
       
       <many-to-one name="author" class="Model.Author" column="author_id" />
+      <many-to-one name="publisher" class="Model.Publisher" column="publisher_id" />
+      
+      <set name="categories" table="book_categories" >
+          <key column="book_id" />
+          <many-to-many column="category_id" class="Model.Category" />
+      </set>
       
       <property name="title" column="title" type="string" />
       <property name="book_location" column="book_location" type="string" />
@@ -15,8 +21,6 @@
       <property name="isbn_issn" column="isbn_issn" type="string" />
       <property name="note" column="note" type="string" />
       <property name="stock" column="stock" type="integer" />
-      
-      <property name="publisher_id" column="publisher_id" type="integer"/>
       <property name="input_date" column="input_date" type="date" />
       <property name="last_data_update" column="last_data_update" type="date"/>
       

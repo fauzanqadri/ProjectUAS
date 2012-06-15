@@ -5,6 +5,8 @@
 package Model;
 
 import java.util.Date;
+import java.util.Set;
+import java.util.HashSet;
 
 
 
@@ -27,7 +29,25 @@ public class Book{
     private int stock;
     private String book_location;
     private Author author;
+    private Publisher publisher;
+    private Set<Category> categories = new HashSet<Category>(0);
 
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
+    
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+    
     public Author getAuthor() {
         return author;
     }
@@ -139,8 +159,6 @@ public class Book{
         this.stock = stock;
         this.book_location = book_location;
     }
-    
-    
     
     public Book() {
     }

@@ -1,11 +1,11 @@
 <%-- 
-    Document   : index.jsp
-    Created on : Jun 11, 2012, 12:41:12 AM
+    Document   : index
+    Created on : Jun 15, 2012, 9:58:19 PM
     Author     : fauzan
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="test.testing" %>
+<%@page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,15 +13,20 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <form method="post" action="" >
-            <input type="text" name="username" value="">
-            <input type="submit" name="submit" value="submit">
-        </form>
-        <% if(request.getAttribute("username") != null){
-            testing test = new testing();
-            test.test();
-        } %>
-        
+        <h1>Hello World! </h1>
+        <form method="POST" action="SelectCoffee.do">
+    Select coffee 
+    Type:
+    <select name="type" size=1">
+      <option value="milky">Milky</option>
+      <option value="froffy">Froffy</option>
+      <option value="icey">Icey</option>
+      <option value="strong">Spaced Out</option>
+    </select>
+    <br><br>
+    <center>
+      <input type="Submit">
+    </center>
+   </form>
     </body>
 </html>
