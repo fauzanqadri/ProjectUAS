@@ -12,12 +12,18 @@
 <%@page import="Controller.Controller" %>
 <%@page import="Model.Category" %>
 <%@include file="header.jsp" %>
-    
     <div class="container">
         
         <div class="row">
             <div class="span12">
             <div class="container">
+                <%if (request.getAttribute("message") != null){ %>
+                    <div class="alert alert-info">
+                        <a class="close" data-dismiss="alert">×</a> 
+                        <strong>Info!</strong>${message} 
+                    </div>
+                <%}%>
+                
                 <h1>Dafar Buku</h1>
                 <table class="table table-striped table-bordered table-condensed">
                     <thead>
@@ -56,7 +62,7 @@
                                   </td>
                                   <td><%= book.getLast_data_update().toString() %></td>
                                   <td>
-                                      <span class="btn btn-mini btn-danger"><i class="icon icon-trash icon-white"></i></span>
+                                      <a class="btn btn-mini btn-danger" href="DeleteBook.do?id=<%= book.getId() %>"><i class="icon icon-trash icon-white"></i></a>                                                         
                                       <span class="btn btn-mini btn-primary"><i class="icon icon-edit icon-white"></i></span>
                                   </td>
                               </tr>

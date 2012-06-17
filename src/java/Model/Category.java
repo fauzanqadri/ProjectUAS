@@ -11,17 +11,17 @@ import java.util.Date;
  * @author fauzan
  */
 public class Category {
-    private int id;
+    private long id;
     private String name;
     private Date input_date;
     private Date last_update;
     private String note;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

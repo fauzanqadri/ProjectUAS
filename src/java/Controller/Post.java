@@ -26,7 +26,7 @@ import org.hibernate.cfg.Configuration;
  * @author fauzan
  */
 public class Post {
-    public void saveBook(String title, String isbn_issn, String note, String image_path, Date input_date, Date last_data_update, int stock, String book_location,int publisher_id, int author_id){
+    public void saveBook(String title, String isbn_issn, String note, String image_path, Date input_date, Date last_data_update, int stock, String book_location,Long publisher_id, Long author_id){
         Session session = null;
         try{
         
@@ -38,12 +38,12 @@ public class Post {
             String qPublisher = "From Publisher where id = :id";
             
             Query queryPublisher = session.createQuery(qPublisher);
-            queryPublisher.setInteger("id", publisher_id);
+            queryPublisher.setLong("id", publisher_id);
             Object queryPublisherResult = queryPublisher.uniqueResult();
             Publisher publisher = (Publisher) queryPublisherResult;
             
             Query queryAuthor = session.createQuery(qAuthor);
-            queryAuthor.setInteger("id",author_id);
+            queryAuthor.setLong("id",author_id);
             
             Object queryAuthorResult = queryAuthor.uniqueResult();
             Author author = (Author) queryAuthorResult;
@@ -56,5 +56,27 @@ public class Post {
         }catch(Exception e){
             
         }
+    }
+    
+    public int deleteBook(Long id){
+        Session session = null;
+        int status = 0;
+        try{
+            
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            
+            Book book = (Book) session.load(Book.class, id);
+            session.delete(book);
+            session.getTransaction().commit();
+            
+            session.close();
+            sessionFactory.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            status = 404;
+        }
+        return status;
     }
 }

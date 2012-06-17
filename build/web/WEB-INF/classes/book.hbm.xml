@@ -3,14 +3,16 @@
 <hibernate-mapping>
   <class name="Model.Book" table="books">
       
-      <id name="id" type="long" column="id" >
+      <id name="id" type="long" column="id">
           <generator class="increment" />
       </id>
       
-      <many-to-one name="author" class="Model.Author" column="author_id" />
-      <many-to-one name="publisher" class="Model.Publisher" column="publisher_id" />
+      <many-to-one name="author" class="Model.Author" column="author_id" cascade="none" />
+      <many-to-one name="publisher" class="Model.Publisher" column="publisher_id" cascade="none" />
       
-      <set name="categories" table="book_categories" >
+      
+      
+      <set name="categories" table="book_categories" inverse="true" cascade="none">
           <key column="book_id" />
           <many-to-many column="category_id" class="Model.Category" />
       </set>

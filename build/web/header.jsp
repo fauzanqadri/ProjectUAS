@@ -30,9 +30,54 @@
           <a class="brand" href="index.jsp">Perpustakaan</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="index.jsp">Home</a></li>
-              <li><a href="insertBook.jsp">Insert New Book</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Book
+                      <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li>
+                          <a href="index.jsp">View All Book</a>
+                          <a href="insertBook.jsp">Insert New Book</a>
+                      </li>
+                  </ul>
+              </li>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Author
+                      <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li>
+                          <a href="#">View All Author</a>
+                          <a href="#">Insert New Author</a>
+                      </li>
+                  </ul>
+              </li>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Publisher
+                      <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li>
+                          <a href="#">View All Publisher</a>
+                          <a href="#">Insert New Publisher</a>
+                      </li>
+                  </ul>
+              </li>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Category
+                      <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li>
+                          <a href="#">View All Category</a>
+                          <a href="#">Insert New Category</a>
+                      </li>
+                  </ul>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
