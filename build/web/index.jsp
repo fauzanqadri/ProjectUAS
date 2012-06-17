@@ -63,7 +63,7 @@
                                   <td><%= book.getLast_data_update().toString() %></td>
                                   <td>
                                       <a class="btn btn-mini btn-danger" href="DeleteBook.do?id=<%= book.getId() %>"><i class="icon icon-trash icon-white"></i></a>                                                         
-                                      <span class="btn btn-mini btn-primary"><i class="icon icon-edit icon-white"></i></span>
+                                      <a class="btn btn-mini btn-primary" href="getBook.do?id=<%= book.getId() %>"><i class="icon icon-edit icon-white"></i></a>
                                   </td>
                               </tr>
                                 

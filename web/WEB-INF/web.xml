@@ -16,6 +16,10 @@
         <servlet-name>DeleteBook</servlet-name>
         <servlet-class>Controller.Action.DeleteBook</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getBook</servlet-name>
+        <servlet-class>Controller.Action.getBook</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InsertBook</servlet-name>
         <url-pattern>/BookInsert.do</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>DeleteBook</servlet-name>
         <url-pattern>/DeleteBook.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getBook</servlet-name>
+        <url-pattern>/getBook.do</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

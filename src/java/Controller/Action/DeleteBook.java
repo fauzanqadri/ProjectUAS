@@ -27,16 +27,11 @@ public class DeleteBook extends HttpServlet{
         System.out.println(book_id);
         Post post = new Post();
         String message = "";
-        int status = post.deleteBook(book_id);
-        System.out.println(status);
-        if (status == 200) {
-            message = "Data Succsessfuly Remove";
-        }else{
-            message = "Something Error";
-        }
-//        request.setAttribute("message",message);
-//        RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-//        view.forward(request, response);
+        post.deleteBook(book_id);
+
+        request.setAttribute("message",message);
+        RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+        view.forward(request, response);
     }
 
     

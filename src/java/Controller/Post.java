@@ -58,9 +58,9 @@ public class Post {
         }
     }
     
-    public int deleteBook(Long id){
+    public void deleteBook(Long id){
         Session session = null;
-        int status = 0;
+
         try{
             
             SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
@@ -75,8 +75,50 @@ public class Post {
             sessionFactory.close();
         }catch(Exception e){
             System.out.println(e.getMessage());
-            status = 404;
+           
         }
-        return status;
+        
+    }
+    
+    public void updateBook(Long id, String title, String isbn_issn, String note, String image_path, int stock, String book_location, Long auth, Long publish){
+        Session session = null;
+        try{
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            Book book = (Book) session.get(Book.class, new Long(id));
+            
+            String qAuthor = "From Author where id = :id";      
+            String qPublisher = "From Publisher where id = :id";
+            
+            Query queryPublisher = session.createQuery(qPublisher);
+            queryPublisher.setLong("id", publish);
+            Object queryPublisherResult = queryPublisher.uniqueResult();
+            Publisher publisher = (Publisher) queryPublisherResult;
+            
+            Query queryAuthor = session.createQuery(qAuthor);
+            queryAuthor.setLong("id",auth);
+            
+            Object queryAuthorResult = queryAuthor.uniqueResult();
+            Author author = (Author) queryAuthorResult;
+            
+            book.setTitle(title);
+            book.setIsbn_issn(isbn_issn);
+            book.setNote(note);
+            book.setImage_path(image_path);
+            book.setStock(stock);
+            book.setBook_location(book_location);
+            book.setAuthor(author);
+            book.setPublisher(publisher);
+            book.setLast_data_update(new Date());
+            
+            session.update(book);
+            session.getTransaction().commit();
+            session.close();
+            
+            
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }
