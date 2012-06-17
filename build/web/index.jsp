@@ -9,13 +9,14 @@
 <%@page import="Model.Book"%>
 <%@page import="java.util.Iterator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Controller.GetController" %>
+<%@page import="Controller.Controller" %>
 <%@page import="Model.Category" %>
 <%@include file="header.jsp" %>
     
     <div class="container">
         
-        <div class="row12">
+        <div class="row">
+            <div class="span12">
             <div class="container">
                 <h1>Dafar Buku</h1>
                 <table class="table table-striped table-bordered table-condensed">
@@ -35,7 +36,7 @@
                     </thead>
                     <tbody>
                         <%
-                            GetController getController = new GetController();
+                            Controller getController = new Controller();
                             Iterator iterator = getController.getAllBook();
                             int i = 1;
                             while(iterator.hasNext()){
@@ -61,7 +62,7 @@
                               </tr>
                                 
                             <%
-                            i++;
+                            i++; 
                             }
                             getController.CloseSession();   
                             %>
@@ -70,6 +71,8 @@
                     
                 </table>
             </div>
+
+        </div>
         </div>
     </div>
     

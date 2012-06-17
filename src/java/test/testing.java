@@ -3,12 +3,14 @@
  * and open the template in the editor.
  */
 package test;
+import Model.Author;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.Query;
 import Model.Book;
 import Model.Category;
+import Model.Publisher;
 import java.util.List;
 import java.util.Iterator;
 
@@ -39,10 +41,16 @@ public class testing {
             SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
             session = sessionFactory.openSession();
             session.beginTransaction();
-            Query q = session.createQuery("From Book");
+            Query q = session.createQuery("From Publisher");
             List list = q.list();
             iterator = list.iterator();
-
+            while(iterator.hasNext()){
+                Publisher pub = (Publisher) iterator.next();
+                System.out.println(pub.getName());
+            }
+            Query q1 = session.createQuery("From Book");
+            List list1 = q1.list();
+            iterator = list1.iterator();
             while(iterator.hasNext()){
                 Book book = (Book) iterator.next();
                 System.out.println("title = "+book.getTitle());
@@ -54,6 +62,12 @@ public class testing {
                     System.out.println("\t"+categories.getName());
                 }
             }
+            Query q2 = session.createQuery("From Author where id = :id");
+            q2.setInteger("id", 1);
+            Object q2r = q2.uniqueResult();
+            Author auth = (Author) q2r;
+            System.out.println(auth.getName());
+            
             session.getTransaction().commit();
             session.close();
             sessionFactory.close();
