@@ -61,8 +61,8 @@
                   </a>
                   <ul class="dropdown-menu">
                       <li>
-                          <a href="#">View All Publisher</a>
-                          <a href="#">Insert New Publisher</a>
+                          <a href="viewPublisher.jsp">View All Publisher</a>
+                          <a href="insertNewPublisher.jsp">Insert New Publisher</a>
                       </li>
                   </ul>
               </li>

@@ -150,6 +150,7 @@ public class Post {
             session.close();
             sessionFactory.close();
         }catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
     
@@ -185,6 +186,77 @@ public class Post {
             auth.setNote(Note);
             auth.setLast_update(new Date());
             session.update(auth);
+            session.getTransaction().commit();
+            session.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void insertPublisher(String name, String note){
+        Session session = null;
+        try{
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.save(new Publisher(name,note ,new Date(), new Date() ));
+            session.getTransaction().commit();
+            sessionFactory.close();
+            
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void deletePublisher(Long id){
+        Session session = null;
+        try{
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            Publisher pub = (Publisher) session.load(Publisher.class, id);
+            session.delete(pub);
+            session.getTransaction().commit();
+            
+            session.close();
+            sessionFactory.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public Object getPublisherById(Long id){
+        Session session = null;
+        Object queryResult = null;
+        //Author author = null;
+        try{
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            Query query = session.createQuery("From Publisher Where id = :id");
+            query.setLong("id", id);
+            queryResult = query.uniqueResult();
+            //author = (Author) queryResult;
+            session.close();
+            sessionFactory.close();
+            return queryResult;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return queryResult;
+        }
+    }
+    
+    public void updatePublisher(long id,String name, String Note){
+        Session session = null;
+        try{
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            Publisher pub = (Publisher) session.get(Publisher.class, new Long(id));
+            pub.setName(name);
+            pub.setNote(Note);
+            pub.setLast_update(new Date());
+            session.update(pub);
             session.getTransaction().commit();
             session.close();
         }catch(Exception e){

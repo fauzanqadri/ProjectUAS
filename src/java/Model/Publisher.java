@@ -59,6 +59,14 @@ public class Publisher {
 
     public Publisher() {
     }
+
+    public Publisher(String name, String note, Date input_date, Date last_update) {
+        this.name = name;
+        this.note = note;
+        this.input_date = input_date;
+        this.last_update = last_update;
+    }
+    
     
     
     

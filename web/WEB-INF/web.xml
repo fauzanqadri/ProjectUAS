@@ -24,6 +24,14 @@
         <servlet-name>viewAuthor</servlet-name>
         <servlet-class>Controller.Action.getAuthor</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>updateAuthor</servlet-name>
+        <servlet-class>Controller.Action.updateAuthor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>publisher</servlet-name>
+        <servlet-class>Controller.Action.PublisherController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InsertBook</servlet-name>
         <url-pattern>/BookInsert.do</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>viewAuthor</servlet-name>
         <url-pattern>/getAllAuthor.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateAuthor</servlet-name>
+        <url-pattern>/updateAuthor.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>publisher</servlet-name>
+        <url-pattern>/publisher.do</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

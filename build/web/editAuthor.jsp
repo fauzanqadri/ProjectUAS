@@ -9,7 +9,7 @@ Author auth = (Author) request.getAttribute("author");
         <div class="span3">
             <div class="well">
             <h2>Edit Author</h2>
-            <form method="POST" action="">
+            <form method="POST" action="updateAuthor.do">
                 <input type="hidden" name="id" value="<%= auth.getId() %>">
                 <label>Author Name</label>
                 <input type="text" name="name" value="<%= auth.getName() %>" >
