@@ -20,6 +20,10 @@
         <servlet-name>getBook</servlet-name>
         <servlet-class>Controller.Action.getBook</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>viewAuthor</servlet-name>
+        <servlet-class>Controller.Action.getAuthor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InsertBook</servlet-name>
         <url-pattern>/BookInsert.do</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>getBook</servlet-name>
         <url-pattern>/getBook.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>viewAuthor</servlet-name>
+        <url-pattern>/getAllAuthor.do</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

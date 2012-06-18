@@ -49,8 +49,8 @@
                   </a>
                   <ul class="dropdown-menu">
                       <li>
-                          <a href="#">View All Author</a>
-                          <a href="#">Insert New Author</a>
+                          <a href="viewAuthor.jsp">View All Author</a>
+                          <a href="insertNewAuthor.jsp">Insert New Author</a>
                       </li>
                   </ul>
               </li>

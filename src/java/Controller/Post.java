@@ -121,4 +121,74 @@ public class Post {
             System.out.println(e.getMessage());
         }
     }
+    
+    public void insertAuthor(String name, String note){
+        Session session = null;
+        try{
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.save(new Author(name, new Date(), new Date(), note));
+            session.getTransaction().commit();
+            sessionFactory.close();
+            
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void deleteAuthor(Long id){
+        Session session = null;
+        try{
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            Author author = (Author) session.load(Author.class, id);
+            session.delete(author);
+            session.getTransaction().commit();
+            
+            session.close();
+            sessionFactory.close();
+        }catch(Exception e){
+        }
+    }
+    
+    public Object getAuthorById(Long id){
+        Session session = null;
+        Object queryResult = null;
+        //Author author = null;
+        try{
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            Query query = session.createQuery("From Author Where id = :id");
+            query.setLong("id", id);
+            queryResult = query.uniqueResult();
+            //author = (Author) queryResult;
+            session.close();
+            sessionFactory.close();
+            return queryResult;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return queryResult;
+        }
+    }
+    
+    public void updateAuthor(long id,String name, String Note){
+        Session session = null;
+        try{
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            Author auth = (Author) session.get(Author.class, new Long(id));
+            auth.setName(name);
+            auth.setNote(Note);
+            auth.setLast_update(new Date());
+            session.update(auth);
+            session.getTransaction().commit();
+            session.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 }
