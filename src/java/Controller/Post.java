@@ -263,4 +263,75 @@ public class Post {
             System.out.println(e.getMessage());
         }
     }
+    
+    public void insertCategory(String name, String note){
+        Session session = null;
+        try{
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.save(new Category(name ,new Date(), new Date() , note ));
+            session.getTransaction().commit();
+            sessionFactory.close();
+            
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void deleteCategory(Long id){
+        Session session = null;
+        try{
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            Category cat = (Category) session.load(Category.class, id);
+            session.delete(cat);
+            session.getTransaction().commit();
+            
+            session.close();
+            sessionFactory.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public Object getCategoryById(Long id){
+        Session session = null;
+        Object queryResult = null;
+        //Author author = null;
+        try{
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            Query query = session.createQuery("From Category Where id = :id");
+            query.setLong("id", id);
+            queryResult = query.uniqueResult();
+            
+            session.close();
+            sessionFactory.close();
+            return queryResult;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return queryResult;
+        }
+    }
+    
+    public void updateCategory(long id,String name, String Note){
+        Session session = null;
+        try{
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            Category cat = (Category) session.get(Category.class, new Long(id));
+            cat.setName(name);
+            cat.setNote(Note);
+            cat.setLast_update(new Date());
+            session.update(cat);
+            session.getTransaction().commit();
+            session.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

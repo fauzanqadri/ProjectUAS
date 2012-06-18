@@ -73,8 +73,8 @@
                   </a>
                   <ul class="dropdown-menu">
                       <li>
-                          <a href="#">View All Category</a>
-                          <a href="#">Insert New Category</a>
+                          <a href="viewCategory.jsp">View All Category</a>
+                          <a href="insertNewCategory.jsp">Insert New Category</a>
                       </li>
                   </ul>
               </li>

@@ -32,6 +32,10 @@
         <servlet-name>publisher</servlet-name>
         <servlet-class>Controller.Action.PublisherController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>category</servlet-name>
+        <servlet-class>Controller.Action.CategoryController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InsertBook</servlet-name>
         <url-pattern>/BookInsert.do</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>publisher</servlet-name>
         <url-pattern>/publisher.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>category</servlet-name>
+        <url-pattern>/category.do</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
