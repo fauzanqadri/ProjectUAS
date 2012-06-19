@@ -35,9 +35,15 @@ public class InsertNewBook extends HttpServlet{
         Date last_data_update = new Date();
         int stock = Integer.parseInt(request.getParameter("stock"));
         String book_location = request.getParameter("location");
-        //String cat = request.getParameter("category");
+        String[] cat =  request.getParameterValues("categories");
+        int[] catId = new int[cat.length];
+        for (int i = 0; i < cat.length; i++) {
+            catId[i] = Integer.parseInt(cat[i]);
+            //System.out.println(catId[i]);
+        }
+        
         Post post = new Post();
-        post.saveBook(title, isbn_issn, note, image_path, input_date, last_data_update, stock, book_location, publisher_id, author_id);
+        post.saveBook(title, isbn_issn, note, image_path, input_date, last_data_update, stock, book_location, publisher_id, author_id, catId);
         
         Object message = "Your Data Successfully add";
         request.setAttribute("message",message);

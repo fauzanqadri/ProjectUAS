@@ -36,6 +36,10 @@
         <servlet-name>category</servlet-name>
         <servlet-class>Controller.Action.CategoryController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>createReport</servlet-name>
+        <servlet-class>Controller.Action.generateReport</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InsertBook</servlet-name>
         <url-pattern>/BookInsert.do</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>category</servlet-name>
         <url-pattern>/category.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createReport</servlet-name>
+        <url-pattern>/createReport.do</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

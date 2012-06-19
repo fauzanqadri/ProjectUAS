@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PerpustakaanReport" language="groovy" pageWidth="1128" pageHeight="595" orientation="Landscape" columnWidth="1088" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     book_categories.`book_id` AS book_categories_book_id,
+     book_categories.`category_id` AS book_categories_category_id,
+     authors.`id` AS authors_id,
+     authors.`name` AS authors_name,
+     authors.`input_date` AS authors_input_date,
+     authors.`last_update` AS authors_last_update,
+     authors.`note` AS authors_note,
+     books.`id` AS books_id,
+     books.`title` AS books_title,
+     books.`isbn_issn` AS books_isbn_issn,
+     books.`note` AS books_note,
+     books.`publisher_id` AS books_publisher_id,
+     books.`author_id` AS books_author_id,
+     books.`image_path` AS books_image_path,
+     books.`input_date` AS books_input_date,
+     books.`last_data_update` AS books_last_data_update,
+     books.`stock` AS books_stock,
+     books.`book_location` AS books_book_location,
+     categories.`id` AS categories_id,
+     categories.`name` AS categories_name,
+     categories.`input_date` AS categories_input_date,
+     categories.`last_update` AS categories_last_update,
+     categories.`note` AS categories_note,
+     publishers.`id` AS publishers_id,
+     publishers.`name` AS publishers_name,
+     publishers.`note` AS publishers_note,
+     publishers.`input_date` AS publishers_input_date,
+     publishers.`last_update` AS publishers_last_update
+FROM
+     `authors` authors INNER JOIN `books` books ON authors.`id` = books.`author_id`
+     INNER JOIN `publishers` publishers ON books.`publisher_id` = publishers.`id`,
+     `categories` categories INNER JOIN `book_categories` book_categories ON categories.`id` = book_categories.`category_id`]]>
+	</queryString>
+	<field name="books_title" class="java.lang.String"/>
+	<field name="books_isbn_issn" class="java.lang.String"/>
+	<field name="books_note" class="java.lang.String"/>
+	<field name="books_last_data_update" class="java.sql.Date"/>
+	<field name="books_input_date" class="java.sql.Date"/>
+	<field name="books_stock" class="java.lang.Integer"/>
+	<field name="authors_name" class="java.lang.String"/>
+	<field name="publishers_name" class="java.lang.String"/>
+	<field name="categories_name" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="338" y="29" width="399" height="50"/>
+				<textElement textAlignment="Center">
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Daftar Buku]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="4" width="238" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="13" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="238" y="4" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ISBN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="4" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Author]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="438" y="4" width="71" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Publisher]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="538" y="4" width="160" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Note]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="698" y="4" width="132" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Input Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="830" y="4" width="129" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Last Update]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="959" y="4" width="129" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Category]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="509" y="4" width="29" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="238" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{books_title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="238" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{books_isbn_issn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{authors_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="438" y="0" width="71" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{publishers_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="538" y="0" width="160" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{books_note}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="698" y="0" width="132" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{books_input_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="830" y="0" width="129" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{books_last_data_update}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="959" y="0" width="129" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{categories_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="509" y="0" width="29" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{books_stock}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="29" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="9" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

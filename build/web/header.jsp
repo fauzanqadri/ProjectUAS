@@ -39,6 +39,7 @@
                       <li>
                           <a href="index.jsp">View All Book</a>
                           <a href="insertBook.jsp">Insert New Book</a>
+                          <a href="createReport.do">Book Report</a>
                       </li>
                   </ul>
               </li>

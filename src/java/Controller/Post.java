@@ -13,20 +13,40 @@ import Model.Book;
 import Model.Category;
 import Model.Author;
 import Model.Publisher;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.*;
+import java.util.Date;
+import java.util.*;
+
+import net.sf.jasperreports.engine.*;
+
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
+
+
 /**
  *
  * @author fauzan
  */
 public class Post {
-    public void saveBook(String title, String isbn_issn, String note, String image_path, Date input_date, Date last_data_update, int stock, String book_location,Long publisher_id, Long author_id){
+    public void saveBook(String title, String isbn_issn, String note, String image_path, Date input_date, Date last_data_update, int stock, String book_location,Long publisher_id, Long author_id, int[] cat){
         Session session = null;
         try{
         
@@ -36,6 +56,7 @@ public class Post {
        
             String qAuthor = "From Author where id = :id";      
             String qPublisher = "From Publisher where id = :id";
+            
             
             Query queryPublisher = session.createQuery(qPublisher);
             queryPublisher.setLong("id", publisher_id);
@@ -47,14 +68,26 @@ public class Post {
             
             Object queryAuthorResult = queryAuthor.uniqueResult();
             Author author = (Author) queryAuthorResult;
+            
+            Set<Category> categorySet = new HashSet<Category>();
+            for (int i = 0; i < cat.length; i++) {
+                System.out.println(cat[i]);
+                String qCategory = "From Category where id = :id";
+                Query queryCategory = session.createQuery(qCategory);
+                queryCategory.setLong("id", new Long(cat[i]));
+                Object queryCategoryResult = queryCategory.uniqueResult();
+                Category category = (Category) queryCategoryResult;
+                //System.out.println(category.getName());
+                categorySet.add(category);
+            }
 
-            session.save(new Book(title, isbn_issn, note, image_path, input_date,last_data_update, stock, book_location, author, publisher));
+            session.save(new Book(title, isbn_issn, note, image_path, input_date,last_data_update, stock, book_location, author, publisher,  categorySet));
 
             session.getTransaction().commit();
             session.close();
             sessionFactory.close();
         }catch(Exception e){
-            
+            System.out.println(e.getMessage());
         }
     }
     
@@ -333,5 +366,37 @@ public class Post {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
+    }
+    
+    public void generateBookReport(File file, File fileCompile, String location) throws IOException, SQLException, ClassNotFoundException, JRException{
+        FileOutputStream fos = null;
+        File file1 = null;
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan_db", "root", "root");
+            //File file = new File("PerpustakaanReport.jrxml");
+            //File fileCompile = new File("PerpustakaanReport.jasper");
+
+            JasperCompileManager.compileReportToFile(
+                    file.getAbsolutePath(),
+                    fileCompile.getAbsolutePath());
+
+            
+            File outputFile = new File(location);
+            
+            fos = new FileOutputStream(outputFile);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(fileCompile.getAbsolutePath(), null, connection);
+            JRAbstractExporter exporter = new JRPdfExporter();
+            exporter.setParameter(JRXlsExporterParameter.JASPER_PRINT,
+                    jasperPrint);
+            exporter.setParameter(JRXlsExporterParameter.OUTPUT_STREAM,
+                    fos);
+            exporter.setParameter(JRExporterParameter.OUTPUT_FILE,
+                    outputFile);
+            exporter.exportReport();
+            
+            fos.close();
+            System.out.println("Report berhasil :)");
+            //return outputFile;
+
     }
 }

@@ -68,9 +68,9 @@
                                     int i = 0;
                                     while(iterator.hasNext()){
                                         Category category = (Category) iterator.next(); %>
-                                        <label class="checkbox"><input type="checkbox" value="<%= category.getId() %>" name="category"><%= category.getName() %> </label>
+                                        <label class="checkbox"><input type="checkbox" value="<%= category.getId() %>" name="categories"><%= category.getName() %> </label>
                                     
-                                    <% } %>
+                                    <%i++; } %>
                         </div>
                     </form>
             </div>

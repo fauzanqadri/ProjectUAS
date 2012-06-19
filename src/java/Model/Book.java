@@ -159,5 +159,22 @@ public class Book{
         this.author = author;
         this.publisher = publisher;
     }
+
+    public Book(String title, String isbn_issn, String note, String image_path, Date input_date, Date last_data_update, int stock, String book_location, Author author, Publisher publisher, Set<Category> categories) {
+        this.title = title;
+        this.isbn_issn = isbn_issn;
+        this.note = note;
+        this.image_path = image_path;
+        this.input_date = input_date;
+        this.last_data_update = last_data_update;
+        this.stock = stock;
+        this.book_location = book_location;
+        this.author = author;
+        this.publisher = publisher;
+        this.categories = categories;
+    }
+
+    
+    
     
 }
