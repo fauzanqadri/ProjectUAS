@@ -91,6 +91,26 @@ public class Post {
         }
     }
     
+    public Object getBookById(Long id){
+         Session session = null;
+         Object queryResult = null;
+            try{ 
+                SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+                session = sessionFactory.openSession();
+                session.beginTransaction();
+                Query query = session.createQuery("From Book Where id = :id");
+                query.setLong("id", id);
+                queryResult = query.uniqueResult();
+                //Book book = (Book) queryResult;
+                session.close();
+                sessionFactory.close();
+                return queryResult;
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+                return queryResult;
+            }
+    }
+    
     public void deleteBook(Long id){
         Session session = null;
 

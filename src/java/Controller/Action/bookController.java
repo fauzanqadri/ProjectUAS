@@ -28,26 +28,13 @@ public class bookController extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         long id = Long.parseLong(req.getParameter("id"));
+        Post post = new Post();
         if (action.equals("update")) {
-            Session session = null;
-            try{ 
-                SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-                session = sessionFactory.openSession();
-                session.beginTransaction();
-                Query query = session.createQuery("From Book Where id = :id");
-                query.setLong("id", id);
-                Object queryResult = query.uniqueResult();
-                Book book = (Book) queryResult;
-                req.setAttribute("book",book);
-                RequestDispatcher view = req.getRequestDispatcher("UpdatePage.jsp");
-                view.forward(req, resp);
-                session.close();
-                sessionFactory.close();
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-            }
+            req.setAttribute("book",post.getBookById(id));
+            RequestDispatcher view = req.getRequestDispatcher("UpdatePage.jsp");
+            view.forward(req, resp);
         }else if(action.equals("delete")){
-            Post post = new Post();
+            
             String message = "";
             post.deleteBook(id);
 
