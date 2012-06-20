@@ -11,10 +11,9 @@
       <many-to-one name="publisher" class="Model.Publisher" column="publisher_id" cascade="none" />
       
       
-      
-      <set name="categories" table="book_categories" inverse="true" cascade="none">
-          <key column="book_id" />
-          <many-to-many column="category_id" class="Model.Category" />
+      <set name="categories" table="book_categories" cascade="none" >
+          <key column="book_id"/>
+          <many-to-many class="Model.Category" column="category_id" />
       </set>
       
       <property name="title" column="title" type="string" />

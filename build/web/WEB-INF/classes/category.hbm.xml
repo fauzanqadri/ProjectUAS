@@ -7,6 +7,11 @@
           <generator class="increment"/>
       </id>
       
+      <set name="books"  table="book_categories" inverse="false" cascade="none">
+          <key column="category_id" />
+          <many-to-many column="book_id" class="Model.Book"/>
+      </set>
+      
       <property name="input_date" column="input_date" type="date" />
       <property name="last_update" column="last_update" type="date" />
       <property name="name" column="name" type="string" />

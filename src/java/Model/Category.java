@@ -5,6 +5,8 @@
 package Model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -16,6 +18,7 @@ public class Category {
     private Date input_date;
     private Date last_update;
     private String note;
+    private Set<Book> books = new HashSet<Book>(0);
 
     public long getId() {
         return id;
@@ -65,6 +68,14 @@ public class Category {
         this.input_date = input_date;
         this.last_update = last_update;
         this.note = note;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
     
     

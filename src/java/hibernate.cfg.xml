@@ -8,7 +8,7 @@
     <property name="hibernate.connection.password">root</property>
     <property name="hibernate.connection.pool_size">1000</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="show_sql">true</property>
     <mapping class="Model.Book" resource="book.hbm.xml"/>
     <mapping class="Model.Author" resource="author.hbm.xml"/>
     <mapping class="Model.Publisher" resource="publisher.hbm.xml"/>
