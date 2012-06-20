@@ -9,14 +9,14 @@ Author auth = (Author) request.getAttribute("author");
         <div class="span3">
             <div class="well">
             <h2>Edit Author</h2>
-            <form method="POST" action="updateAuthor.do">
+            <form method="POST" action="author.do">
                 <input type="hidden" name="id" value="<%= auth.getId() %>">
                 <label>Author Name</label>
                 <input type="text" name="name" value="<%= auth.getName() %>" >
                 <label>Note</label>
                 <textarea name="note"><%= auth.getNote() %></textarea>
                 <div class="span1">
-                    <input type="submit" class="btn btn-primary" class="pull-right">
+                    <input type="submit" class="btn btn-primary" class="pull-right" name="submit" value="update">
                 </div>
             </form>
             </div>

@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <servlet>
-        <servlet-name>InsertBook</servlet-name>
-        <servlet-class>Controller.Action.InsertNewBook</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Coffee</servlet-name>
-        <servlet-class>Controller.Action.CoffeeSelect</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>test</servlet-name>
-        <servlet-class>Controller.Action.tester</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteBook</servlet-name>
-        <servlet-class>Controller.Action.DeleteBook</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>getBook</servlet-name>
-        <servlet-class>Controller.Action.getBook</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>viewAuthor</servlet-name>
-        <servlet-class>Controller.Action.getAuthor</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>updateAuthor</servlet-name>
-        <servlet-class>Controller.Action.updateAuthor</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>publisher</servlet-name>
         <servlet-class>Controller.Action.PublisherController</servlet-class>
     </servlet>
@@ -40,34 +12,14 @@
         <servlet-name>createReport</servlet-name>
         <servlet-class>Controller.Action.generateReport</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>InsertBook</servlet-name>
-        <url-pattern>/BookInsert.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Coffee</servlet-name>
-        <url-pattern>/SelectCoffee.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>test</servlet-name>
-        <url-pattern>/tester.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteBook</servlet-name>
-        <url-pattern>/DeleteBook.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>getBook</servlet-name>
-        <url-pattern>/getBook.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>viewAuthor</servlet-name>
-        <url-pattern>/getAllAuthor.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>updateAuthor</servlet-name>
-        <url-pattern>/updateAuthor.do</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>book</servlet-name>
+        <servlet-class>Controller.Action.bookController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>author</servlet-name>
+        <servlet-class>Controller.Action.authorController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>publisher</servlet-name>
         <url-pattern>/publisher.do</url-pattern>
@@ -79,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>createReport</servlet-name>
         <url-pattern>/createReport.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>book</servlet-name>
+        <url-pattern>/book.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>author</servlet-name>
+        <url-pattern>/author.do</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

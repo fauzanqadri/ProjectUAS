@@ -25,7 +25,7 @@
             <div class="well">
                 <div class="row-fluid">
                     <h1>Edit Book</h1>
-                    <form method="POST" action="getBook.do">
+                    <form method="POST" action="book.do">
                         <div class="span4">
                             <label>Book Title</label>
                             <input type="text" name="title" value="<%= book.getTitle() %>" >
@@ -48,7 +48,7 @@
                         </div>
                         <div class="span4">
                             <label>ISBN</label>
-                            <input type="text" name="isbn" value="<%= book.getIsbn_issn() %>" >
+                            <input type="text" name="isbn_issn" value="<%= book.getIsbn_issn() %>" >
                             <label>Book Location</label>
                             <input type="text" name="location" value="<%= book.getBook_location() %>" >
                             <label>Publisher</label>
@@ -66,7 +66,7 @@
                                  
                                  <% } %>
                             </select>
-                            <input type="submit" class="btn btn-primary">
+                            <input type="submit" class="btn btn-primary" name="submit" value="update">
                         </div>
                         <div class="span4">
                          `<label>Category</label>
@@ -75,7 +75,7 @@
                                     int i = 0;
                                     while(iterator.hasNext()){
                                         Category category = (Category) iterator.next(); %>
-                                        <label class="checkbox"><input type="checkbox" value="<%= category.getId() %>" name="category"><%= category.getName() %> </label>
+                                        <label class="checkbox"><input type="checkbox" value="<%= category.getId() %>" name="categories"><%= category.getName() %> </label>
                                     
                              <% } %>
                         </div>

@@ -38,8 +38,8 @@
                                         <%= auth.getLast_update() %>
                                     </td>
                                     <td>
-                                        <a class="btn btn-mini btn-danger" href="getAllAuthor.do?id=<%= auth.getId() %>&action=delete"><i class="icon icon-trash icon-white"></i></a>                                                         
-                                        <a class="btn btn-mini btn-primary" href="getAllAuthor.do?id=<%= auth.getId() %>&action=update""><i class="icon icon-edit icon-white"></i></a>
+                                        <a class="btn btn-mini btn-danger" href="author.do?id=<%= auth.getId() %>&action=delete"><i class="icon icon-trash icon-white"></i></a>                                                         
+                                        <a class="btn btn-mini btn-primary" href="author.do?id=<%= auth.getId() %>&action=update""><i class="icon icon-edit icon-white"></i></a>
                                     </td>
                                 </tr>
                                 

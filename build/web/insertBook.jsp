@@ -20,7 +20,7 @@
             <div class="well">
             <h1>Insert New Book</h1>
             <div class="row-fluid">
-                <form method="POST" action="BookInsert.do" >			
+                <form method="POST" action="book.do" >			
                         <div class="span4">
                             <div class="row-fluid">
                                 <label>Book Title</label>
@@ -59,7 +59,7 @@
                             </select>
                             <label>Book Location</label>
                             <input type="text" name="location" value="" >
-                            <input type="submit" class="btn btn-primary">
+                            <input type="submit" class="btn btn-primary" name="submit" value="save">
                         </div>
                         <div class="span4">
                             <label>Category</label>
