@@ -72,7 +72,7 @@ public class bookController extends HttpServlet{
             view.forward(req, resp); 
         }else if(submit.equals("update")){
             Long id = Long.parseLong(req.getParameter("id"));
-            post.updateBook(id, title, isbn_issn, note, image_path, stock, book_location, author_id, publisher_id);
+            post.updateBook(id, title, isbn_issn, note, image_path, stock, book_location, author_id, publisher_id,catId);
             RequestDispatcher view = req.getRequestDispatcher("index.jsp");
             view.forward(req, resp);
         }

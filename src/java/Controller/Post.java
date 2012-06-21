@@ -133,7 +133,7 @@ public class Post {
         
     }
     
-    public void updateBook(Long id, String title, String isbn_issn, String note, String image_path, int stock, String book_location, Long auth, Long publish){
+    public void updateBook(Long id, String title, String isbn_issn, String note, String image_path, int stock, String book_location, Long auth, Long publish, int[] catid){
         Session session = null;
         try{
             SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
@@ -143,6 +143,7 @@ public class Post {
             
             String qAuthor = "From Author where id = :id";      
             String qPublisher = "From Publisher where id = :id";
+            
             
             Query queryPublisher = session.createQuery(qPublisher);
             queryPublisher.setLong("id", publish);
@@ -155,6 +156,16 @@ public class Post {
             Object queryAuthorResult = queryAuthor.uniqueResult();
             Author author = (Author) queryAuthorResult;
             
+            Set<Category> cat = new HashSet<Category>();
+            for (int i = 0; i < catid.length; i++) {
+                String qCategory = "From Category where id = :id";
+                Query catQuery = session.createQuery(qCategory);
+                catQuery.setLong("id", catid[i]);
+                Object queryCatResult = catQuery.uniqueResult();
+                Category category = (Category) queryCatResult;
+                cat.add(category);
+            }
+            
             book.setTitle(title);
             book.setIsbn_issn(isbn_issn);
             book.setNote(note);
@@ -164,7 +175,7 @@ public class Post {
             book.setAuthor(author);
             book.setPublisher(publisher);
             book.setLast_data_update(new Date());
-            
+            book.setCategories(cat);
             session.update(book);
             session.getTransaction().commit();
             session.close();
