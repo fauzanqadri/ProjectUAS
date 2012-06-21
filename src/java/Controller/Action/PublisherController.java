@@ -20,19 +20,26 @@ public class PublisherController extends HttpServlet {
 
     @Override    
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long id = Long.parseLong(req.getParameter("id"));
-        String action = req.getParameter("action");
-        Post post = new Post();
-        if (action.equals("delete")) {
-            
-            post.deletePublisher(id);
-            RequestDispatcher view = req.getRequestDispatcher("viewPublisher.jsp");
-            view.forward(req, resp);
-        }else if(action.equals("update")){
-            req.setAttribute("publisher", post.getPublisherById(id));
-            RequestDispatcher view = req.getRequestDispatcher("updatePublisher.jsp");
-            view.forward(req, resp);
+        
+        if (req.getParameter("action") != null) {
+            Long id = Long.parseLong(req.getParameter("id"));
+            String action = req.getParameter("action");
+            Post post = new Post();
+            if (action.equals("delete")) {            
+                post.deletePublisher(id);
+                RequestDispatcher view = req.getRequestDispatcher("viewPublisher.jsp");
+                view.forward(req, resp);
+            }else if(action.equals("update")){
+                req.setAttribute("publisher", post.getPublisherById(id));
+                RequestDispatcher view = req.getRequestDispatcher("updatePublisher.jsp");
+                view.forward(req, resp);
+            }
+        }else{
+           RequestDispatcher view = req.getRequestDispatcher("viewPublisher.jsp");
+           view.forward(req, resp);
         }
+        
+        
     }
 
     @Override

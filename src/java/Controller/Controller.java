@@ -4,7 +4,6 @@
  */
 package Controller;
 
-import Model.Author;
 import java.util.Iterator;
 import java.util.List;
 import org.hibernate.Query;
@@ -94,21 +93,5 @@ public class Controller {
         this.session.close();
         this.sessionFactory.close();
     }
-    
-//    public Author getAuthorUpdate(Long id){
-//        Author author = null;
-//        try{
-//            //author = (Author) this.session.get(Author.class, new Long(id));
-//            Query query = session.createQuery("From Book Where id = :id");
-//            query.setLong("id", id);
-//            Object queryResult = query.uniqueResult();
-//            author = (Author) queryResult;
-//            this.CloseSession();
-//            return author;
-//        }catch(Exception e){
-//            System.out.println(e.getMessage());
-//            return author;
-//        }
-//          
-//    }
+
 }

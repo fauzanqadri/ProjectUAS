@@ -4,8 +4,8 @@
  */
 package Controller.Action;
 
+import Controller.Controller;
 import Controller.Post;
-import Model.Book;
 import java.io.IOException;
 import java.util.Date;
 import javax.servlet.RequestDispatcher;
@@ -13,10 +13,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 /**
  *
@@ -26,21 +22,28 @@ public class bookController extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("action");
-        long id = Long.parseLong(req.getParameter("id"));
+        
+        
         Post post = new Post();
-        if (action.equals("update")) {
-            req.setAttribute("book",post.getBookById(id));
-            RequestDispatcher view = req.getRequestDispatcher("UpdatePage.jsp");
-            view.forward(req, resp);
-        }else if(action.equals("delete")){
-            
-            String message = "";
-            post.deleteBook(id);
-
-            req.setAttribute("message",message);
-            RequestDispatcher view = req.getRequestDispatcher("index.jsp");
-            view.forward(req, resp);
+        if (req.getParameter("action") != null) {
+            String action = req.getParameter("action");
+            long id = Long.parseLong(req.getParameter("id"));
+            if (action.equals("update")) {
+                req.setAttribute("book",post.getBookById(id));
+                RequestDispatcher view = req.getRequestDispatcher("UpdatePage.jsp");
+                view.forward(req, resp);
+            }else if(action.equals("delete")){
+                String message = "Data Successfuly Deleted";
+                post.deleteBook(id);
+                req.setAttribute("message",message);
+                RequestDispatcher view = req.getRequestDispatcher("index.jsp");
+                view.forward(req, resp);
+            }
+        }else{
+//           Controller con = new Controller();
+//           req.setAttribute("message",message);
+           RequestDispatcher view = req.getRequestDispatcher("index.jsp");
+           view.forward(req, resp); 
         }
     }
 
@@ -73,6 +76,8 @@ public class bookController extends HttpServlet{
         }else if(submit.equals("update")){
             Long id = Long.parseLong(req.getParameter("id"));
             post.updateBook(id, title, isbn_issn, note, image_path, stock, book_location, author_id, publisher_id,catId);
+            Object message = "Your Data Successfully Update";
+            req.setAttribute("message",message);
             RequestDispatcher view = req.getRequestDispatcher("index.jsp");
             view.forward(req, resp);
         }

@@ -21,21 +21,28 @@ public class CategoryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        String name = req.getParameter("name");
-        String note = req.getParameter("note");
-        String action = req.getParameter("action");
-        Post post = new Post();
-        if (action.equals("delete")) {
-            Long id = Long.parseLong(req.getParameter("id"));
-            post.deleteCategory(id);
+        
+        if (req.getParameter("action") != null) {
+            String name = req.getParameter("name");
+            String note = req.getParameter("note");
+            String action = req.getParameter("action");
+            Post post = new Post();
+            if (action.equals("delete")) {
+                Long id = Long.parseLong(req.getParameter("id"));
+                post.deleteCategory(id);
+                RequestDispatcher view = req.getRequestDispatcher("viewCategory.jsp");
+                view.forward(req, resp);
+            }else if(action.equals("update")){
+                Long id = Long.parseLong(req.getParameter("id"));
+                req.setAttribute("category", post.getCategoryById(id));
+                RequestDispatcher view = req.getRequestDispatcher("updateCategory.jsp");
+                view.forward(req, resp);
+            }
+        }else{
             RequestDispatcher view = req.getRequestDispatcher("viewCategory.jsp");
             view.forward(req, resp);
-        }else if(action.equals("update")){
-            Long id = Long.parseLong(req.getParameter("id"));
-            req.setAttribute("category", post.getCategoryById(id));
-            RequestDispatcher view = req.getRequestDispatcher("updateCategory.jsp");
-            view.forward(req, resp);
         }
+        
     }
 
     @Override

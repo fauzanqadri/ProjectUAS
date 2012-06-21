@@ -3,10 +3,8 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[SELECT
-     book_categories.`book_id` AS book_categories_book_id,
-     book_categories.`category_id` AS book_categories_category_id,
      authors.`id` AS authors_id,
      authors.`name` AS authors_name,
      authors.`input_date` AS authors_input_date,
@@ -32,21 +30,43 @@
      publishers.`name` AS publishers_name,
      publishers.`note` AS publishers_note,
      publishers.`input_date` AS publishers_input_date,
-     publishers.`last_update` AS publishers_last_update
+     publishers.`last_update` AS publishers_last_update,
+     book_categories.`book_id` AS book_categories_book_id,
+     book_categories.`category_id` AS book_categories_category_id
 FROM
      `authors` authors INNER JOIN `books` books ON authors.`id` = books.`author_id`
-     INNER JOIN `publishers` publishers ON books.`publisher_id` = publishers.`id`,
-     `categories` categories INNER JOIN `book_categories` book_categories ON categories.`id` = book_categories.`category_id`]]>
+     INNER JOIN `publishers` publishers ON books.`publisher_id` = publishers.`id`
+     INNER JOIN `book_categories` book_categories ON books.`id` = book_categories.`book_id`
+     INNER JOIN `categories` categories ON book_categories.`category_id` = categories.`id`]]>
 	</queryString>
+	<field name="authors_id" class="java.lang.Long"/>
+	<field name="authors_name" class="java.lang.String"/>
+	<field name="authors_input_date" class="java.sql.Date"/>
+	<field name="authors_last_update" class="java.sql.Date"/>
+	<field name="authors_note" class="java.lang.String"/>
+	<field name="books_id" class="java.lang.Long"/>
 	<field name="books_title" class="java.lang.String"/>
 	<field name="books_isbn_issn" class="java.lang.String"/>
 	<field name="books_note" class="java.lang.String"/>
-	<field name="books_last_data_update" class="java.sql.Date"/>
+	<field name="books_publisher_id" class="java.lang.Long"/>
+	<field name="books_author_id" class="java.lang.Long"/>
+	<field name="books_image_path" class="java.lang.String"/>
 	<field name="books_input_date" class="java.sql.Date"/>
+	<field name="books_last_data_update" class="java.sql.Date"/>
 	<field name="books_stock" class="java.lang.Integer"/>
-	<field name="authors_name" class="java.lang.String"/>
-	<field name="publishers_name" class="java.lang.String"/>
+	<field name="books_book_location" class="java.lang.String"/>
+	<field name="categories_id" class="java.lang.Long"/>
 	<field name="categories_name" class="java.lang.String"/>
+	<field name="categories_input_date" class="java.sql.Date"/>
+	<field name="categories_last_update" class="java.sql.Date"/>
+	<field name="categories_note" class="java.lang.String"/>
+	<field name="publishers_id" class="java.lang.Long"/>
+	<field name="publishers_name" class="java.lang.String"/>
+	<field name="publishers_note" class="java.lang.String"/>
+	<field name="publishers_input_date" class="java.sql.Date"/>
+	<field name="publishers_last_update" class="java.sql.Date"/>
+	<field name="book_categories_book_id" class="java.lang.Long"/>
+	<field name="book_categories_category_id" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

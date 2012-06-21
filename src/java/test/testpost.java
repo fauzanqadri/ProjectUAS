@@ -10,9 +10,9 @@ package test;
  */
 public class testpost {
     
-    public void post(String name, String note){
-        System.out.println("name :" + name);
-        System.out.println(" note :" + note);
+    public static void main(){
+        Object o;
+ 
     }
     
 }

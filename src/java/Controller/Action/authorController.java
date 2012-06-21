@@ -21,20 +21,27 @@ public class authorController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long id = Long.parseLong(req.getParameter("id"));
-        String action = req.getParameter("action");
-
-        Post post = new Post();
-     
-        if (action.equals("delete")) {
-            post.deleteAuthor(id);
+        
+        if (req.getParameter("action") != null) {
+            Long id = Long.parseLong(req.getParameter("id"));
+            String action = req.getParameter("action");
+            Post post = new Post();
+            if (action.equals("delete")) {
+                post.deleteAuthor(id);
+                RequestDispatcher view = req.getRequestDispatcher("viewAuthor.jsp");
+                view.forward(req, resp);
+            }else if(action.equals("update")){          
+                req.setAttribute("author", post.getAuthorById(id));
+                RequestDispatcher view = req.getRequestDispatcher("editAuthor.jsp");
+                view.forward(req, resp);
+            }
+        }else{
             RequestDispatcher view = req.getRequestDispatcher("viewAuthor.jsp");
             view.forward(req, resp);
-        }else if(action.equals("update")){          
-            req.setAttribute("author", post.getAuthorById(id));
-            RequestDispatcher view = req.getRequestDispatcher("editAuthor.jsp");
-            view.forward(req, resp);
         }
+        
+     
+        
     }
 
     @Override

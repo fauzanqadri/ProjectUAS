@@ -4,41 +4,26 @@
  */
 package Controller;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import Model.Author;
 import Model.Book;
 import Model.Category;
-import Model.Author;
 import Model.Publisher;
-
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
+import java.util.HashSet;
+import java.util.Set;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.sql.*;
-import java.util.Date;
-import java.util.*;
-
-import net.sf.jasperreports.engine.*;
-
-import net.sf.jasperreports.engine.export.JRPdfExporter;
-import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
 
 
 /**

@@ -22,7 +22,7 @@ import java.util.Iterator;
 public class testing {
     
     //public Iterator test(){
-    public static void main(String[] a){
+    public static void mainM(){
         Session session = null;
         Iterator iterator = null;
 //        try{
